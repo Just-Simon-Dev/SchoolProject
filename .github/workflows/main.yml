@@ -1,0 +1,27 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    environment: production
+    concurrency: production
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo yum update -y
+          sudo yum install -y sshpass
+      - name: Create private key file
+        run: |
+          chmod 701 ./pv_key.key
+          sudo echo "${{ secrets.SSH_PRIVATE_KEY }}" >> pv_key.key
+          chmod 600 ./pv_key.key
+      - name: Deploy to VM
+        run: |
+          ssh -i ./pv_key.key ${{ secrets.ACC }} 'cd ./habitablEarth && sudo docker compose down && sudo git pull origin main && sudo docker compose up -d --build'
+          
+      
