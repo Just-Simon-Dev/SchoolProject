@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from .Services.DbService import create_db_and_tables
 
-app = FastAPI()
+app = FastAPI(root_path='/api')
 
 @app.on_event("startup")
 def on_startup():
