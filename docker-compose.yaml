@@ -1,0 +1,54 @@
+version: '3.14'
+
+services:
+  frontend:
+    container_name: vue-frontend
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    networks:
+      - ewidencja_network
+  
+  backend:
+    container_name: fastapi-backend
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - "3080:8000"
+    networks:
+      - ewidencja_network
+  
+  postgres:
+    container_name: postgres
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin!
+      - POSTGRES_DB=evidention
+    networks:
+      - ewidencja_network
+
+  scripts:
+    container_name: cron-scripts
+    build:
+      context: ./scripts
+      dockerfile: ./Dockerfile
+    networks:
+      - ewidencja_network
+
+volumes:
+  postgres_data:
+
+networks:
+  ewidencja_network:
+    driver: bridge
