@@ -17,7 +17,6 @@ jobs:
           sudo yum install -y sshpass
       - name: Create private key file
         run: |
-          chmod 701 ./pv_key.key
           sudo echo "${{ secrets.SSH_PRIVATE_KEY }}" >> pv_key.key
           chmod 600 ./pv_key.key
       - name: Deploy to VM
