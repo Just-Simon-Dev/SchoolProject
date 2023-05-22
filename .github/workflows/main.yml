@@ -11,10 +11,6 @@ jobs:
     environment: production
     concurrency: production
     steps:
-      - name: Install dependencies
-        run: |
-          sudo yum update -y
-          sudo yum install -y sshpass
       - name: Create private key file
         run: |
           sudo echo "${{ secrets.SSH_PRIVATE_KEY }}" >> pv_key.key
