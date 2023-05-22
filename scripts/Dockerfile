@@ -21,6 +21,8 @@ COPY start.sh .
 # Fix line endings && execute permissions
 RUN dos2unix crontab.* *.sh jobs/*.* \
     && \
+    find . -type f -iname "*.sh" -exec chmod +x {} \
+    && \
     find . -type f -iname "*.py" -exec chmod +x {} \;
 
 RUN touch /var/log/cron.log
