@@ -3,10 +3,10 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
 	proxy: {
-	  '^/api': {
-		target: 'http://backend:3080',
-		changeOrigin: true
-	  },
+		'^/api': {
+			target: 'http://backend:3080',
+			changeOrigin: true
+		},
 	}
   }
 })

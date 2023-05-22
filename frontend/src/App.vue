@@ -1,9 +1,12 @@
 <template>
-  <p class="text-4xl text-red-600 text-bold text-center">
-    App
-  </p>
+
+  <div class="backgound">tutaj ma być logo szkoły jako background</div>
+  <RouterView />
+  
 </template>
 
-<script>
+<script setup>
+
+	import {RouterView} from 'vue-router'
 
 </script>
