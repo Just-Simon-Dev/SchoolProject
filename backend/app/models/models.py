@@ -1,10 +1,30 @@
-from sqlmodel import Field, SQLModel
-from datetime import datetime
-from typing import Optional
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
+from sqlalchemy.orm import relationship
 
-class Cities(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    postal_code: str
-    name: str
-    lat: float
-    lon: float
+from ..Services.DbService import Base
+
+class Login(Base):
+    __tablename__ = "login"
+    id: Column(Integer, primary_key=True)
+    login: Column(String, unique=True)
+    hashed_password: Column(String)
+
+class Identifaction(Base):
+    __tablename__ = "identifaction"
+    ip: Column(String, primary_key=True)
+    room_number: Column(String)
+    computer_number: Column(Integer)
+
+class Form(Base):
+    __tablename__ = "form"
+    id: Column(Integer, primary_key=True)
+    full_name: Column(String)
+    date: Column(Date)
+    time: Column(String)
+    issues: Column(String)
+    ip: Column(String, ForeignKey("identifaction.ip"))
+
+
+
+
+
