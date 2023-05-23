@@ -4,3 +4,4 @@ psycopg2
 sqlalchemy
 sqlmodel
 geoalchemy2
+python-multipart
