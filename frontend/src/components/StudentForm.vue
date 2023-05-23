@@ -55,7 +55,8 @@
 		return `${output[0].breakHours}:${output[0].breakMinutes} - ${output[1].endLessonHours}:${output[1].endLessonMinutes}`;
 	}
 
-	let nameAndSurname = "";
+	let name = "";
+	let surname = "";
 	let studentClass = "";
 	let date = mm + ' / ' + dd + ' / ' + yyyy;
 	let numberOfHours = ref(1);
@@ -64,13 +65,13 @@
 	let error = ref('')
 
 	function sendData(){
-		if(nameAndSurname == "" || studentClass == "" || currentHour.value == ""){
+		if(name == "" || surname == "" || studentClass == "" || currentHour.value == ""){
 			console.log(error)
 			error.value = "niektóre pola nie zostały wypełnione!"
 			console.log(error)
 			return;
 		}
-		const studentFormService = new StudentFormService(nameAndSurname, studentClass, date, numberOfHours, currentHour.value, issues)
+		const studentFormService = new StudentFormService(`${name} ${surname}`, studentClass, date, numberOfHours, currentHour.value, issues)
 		studentFormService.PostData()
 		window.close()
 	}
@@ -80,75 +81,107 @@
 </script>
 
 <template>
-	<form>
-		<div>
-			imie i nazwisko 
-			<input
-			type="text" 
-			:value="nameAndSurname" 
-			@input="event => nameAndSurname = event.target.value" 
-			required
-			/>
+	<div class="flex flex-col w-full min-h-screen items-center justify-center bg-slate-50">
+		<div class="relative flex items-end bg-white p-10 rounded-lg shadow-md space-x-10 overflow-hidden">
+			<div class="flex items-end h-full z-10">
+				<img class="align-bottom" src="logo.svg" alt="logo ZSŁ">
+			</div>
+			<form class="grid grid-cols-2 justify-center gap-10 rounded-lg shadow-md p-10 bg-[#203354] text-white z-10">
+				<div class="flex flex-col space-y-2">
+					<div>
+						<p class="p-1">Imię</p>
+						<input
+						class="rounded focus:outline-none text-black py-1 px-2"
+						type="text" 
+						:value="name" 
+						@input="event => name = event.target.value" 
+						required
+						/>
+					</div>
+					<div>
+						<p class="p-1">Nazwisko</p>
+						<input
+						class="rounded focus:outline-none text-black py-1 px-2"
+						type="text" 
+						:value="surname" 
+						@input="event => surname = event.target.value" 
+						required
+						/>
+					</div>
+					<div>
+						<p class="p-1">Klasa</p>
+						<input
+						class="rounded focus:outline-none text-black py-1 px-2"
+						type="text" 
+						:value="studentClass" 
+						@input="event => studentClass = event.target.value"
+						required 
+						/>
+					</div>
+					<div>
+						<p class="p-1">Liczba lekcji</p>
+						<input
+						class="rounded focus:outline-none text-black py-1 px-2"
+						type="number" 
+						:value="numberOfHours" 
+						@input="event => {
+							if(event.target.value < 0){
+								numberOfHours = 0
+							} 
+							if(event.target.value > numberOfLessonLeft){
+								numberOfHours = numberOfLessonLeft
+							}
+							else{
+								numberOfHours = event.target.value
+							}
+						}"
+						min="0"
+						:max="numberOfLessonLeft"
+						required
+						/>
+					</div>
+					<div>
+						<p class="p-1">Uwagi</p>
+						<textarea
+						class="rounded focus:outline-none text-black py-1 px-2 resize-none"
+						rows="3"
+						type="text" 
+						:value="issues" 
+						@input="event => issues = event.target.value" 
+						></textarea>
+					</div>
+				</div>
+				<div>
+					<div>
+						<p class="p-1">Data</p>
+						<input
+						class="rounded focus:outline-none text-black py-1 px-2"
+						type="text" 
+						:value="date" 
+						@input="event => date = event.target.value" 
+						disabled
+						/>
+					</div>
+					<div>
+						<p class="p-1">Godzina</p>
+						<input
+						class="rounded focus:outline-none text-black py-1 px-2"
+						type="text" 
+						:value="currentHour"
+						disabled
+						/>
+					</div>
+				</div>
+				<div class="flex justify-center col-span-2">
+					<button type="button" class="w-64 tracking-wider uppercase bg-[#da1c04] rounded-full py-2" v-on:click="sendData()">Wyślij</button>
+				</div>
+			</form>
+			<div class="absolute -bottom-40 -right-36 rounded-full w-96 h-96 bg-[#da1c04] z-0"></div>
+			<div class="absolute -top-40 left-12 rounded-full w-96 h-96 bg-[#da1c04] z-0 shadow"></div>
 		</div>
-		<div>
-			klasa 
-			<input
-			type="text" 
-			:value="studentClass" 
-			@input="event => studentClass = event.target.value"
-			required 
-			/>
+		<div class="error" v-if="error != ''">
+			{{ error }}
 		</div>
-		<div>
-			data 
-			<input
-			type="text" 
-			:value="date" 
-			@input="event => date = event.target.value" 
-			disabled
-			/>
-		</div>
-		<div>
-			liczba lekcji
-			<input
-			type="number" 
-			:value="numberOfHours" 
-			@input="event => {
-				if(event.target.value < 0){
-					numberOfHours = 0
-				} 
-				if(event.target.value > numberOfLessonLeft){
-					numberOfHours = numberOfLessonLeft
-				}
-				else{
-					numberOfHours = event.target.value
-				}
-			}"
-			min="0"
-			:max="numberOfLessonLeft"
-			required
-			/>
-		</div>
-		<div>
-			godzina
-			<input
-			type="text" 
-			:value="currentHour"
-			disabled
-			/>
-		</div>
-		<div>
-			uwagi
-			<input
-			type="text" 
-			:value="issues" 
-			@input="event => issues = event.target.value" 
-			/>
-		</div>
-		<button type="button" v-on:click="sendData()">send</button>
-	</form>
-	<div class="error" v-if="error != ''">
-		{{ error }}
 	</div>
 </template>
 
