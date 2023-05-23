@@ -1,3 +1,4 @@
+from typing import Any
 from sqlalchemy import Column, ForeignKey, Integer, String, Date
 from sqlalchemy.orm import relationship
 
@@ -14,6 +15,10 @@ class Identifaction(Base):
     ip = Column(String, primary_key=True)
     room_number = Column(String)
     computer_number = Column(Integer)
+    def __init__(self, ip, room_number, computer_number):
+         self.ip = ip
+         self.room_number = room_number
+         self.computer_number = computer_number
 
 class Form(Base):
     __tablename__ = "form"
@@ -23,6 +28,12 @@ class Form(Base):
     time = Column(String)
     issues = Column(String)
     ip = Column(String, ForeignKey("identifaction.ip"))
+    def __init__(self, full_name, date, time, issues, ip):
+          self.full_name = full_name
+          self.date = date
+          self.time = time
+          self.issues = issues
+          self.ip = ip
 
 
 
