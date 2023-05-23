@@ -14,7 +14,7 @@
 **/log.txt
 **/Pipfile.lock
 **/env3.*
-**/env
+./env
 **/docs_build
 **/venv
 **/docs.zip
@@ -29,8 +29,8 @@
 **/dist/
 
 # local env files
-**/.env.local
-**/.env.*.local
+./.env.local
+./.env.*.local
 
 # Log files
 **/npm-debug.log*

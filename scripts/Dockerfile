@@ -18,6 +18,8 @@ COPY jobs/*.* ./jobs/
 COPY crontab.* ./
 COPY start.sh .
 
+RUN chmod +x start.sh
+
 # Fix line endings && execute permissions
 RUN dos2unix crontab.* *.sh jobs/*.* \
     && \
