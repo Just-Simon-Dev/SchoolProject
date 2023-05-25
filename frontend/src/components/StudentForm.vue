@@ -86,22 +86,21 @@
 			<div class="flex items-end h-full z-10">
 				<img class="align-bottom" src="logo.svg" alt="logo ZSŁ">
 			</div>
-			<form class="grid grid-cols-2 justify-center gap-10 rounded-lg shadow-md p-10 bg-[#203354] text-white z-10">
-				<div class="flex flex-col space-y-2">
-					<div>
+			<form class="grid grid-cols-2 justify-center gap-6 rounded-lg shadow-lg p-10 bg-[#07264e] text-white z-10">
+					<div class="col-span-2">
 						<p class="p-1">Imię</p>
 						<input
-						class="rounded focus:outline-none text-black py-1 px-2"
+						class="rounded focus:outline-none text-black py-1 px-2 w-full"
 						type="text" 
 						:value="name" 
 						@input="event => name = event.target.value" 
 						required
 						/>
 					</div>
-					<div>
+					<div class="col-span-2">
 						<p class="p-1">Nazwisko</p>
 						<input
-						class="rounded focus:outline-none text-black py-1 px-2"
+						class="rounded focus:outline-none text-black py-1 px-2 w-full"
 						type="text" 
 						:value="surname" 
 						@input="event => surname = event.target.value" 
@@ -121,7 +120,7 @@
 					<div>
 						<p class="p-1">Liczba lekcji</p>
 						<input
-						class="rounded focus:outline-none text-black py-1 px-2"
+						class="rounded focus:outline-none text-black py-1 px-2 w-full"
 						type="number" 
 						:value="numberOfHours" 
 						@input="event => {
@@ -135,27 +134,26 @@
 								numberOfHours = event.target.value
 							}
 						}"
-						min="0"
+						min="1"
+
 						:max="numberOfLessonLeft"
 						required
 						/>
 					</div>
-					<div>
+					<div class="col-span-2">
 						<p class="p-1">Uwagi</p>
 						<textarea
-						class="rounded focus:outline-none text-black py-1 px-2 resize-none"
+						class="rounded focus:outline-none text-black py-1 px-2 resize-none w-full"
 						rows="3"
 						type="text" 
 						:value="issues" 
 						@input="event => issues = event.target.value" 
 						></textarea>
 					</div>
-				</div>
-				<div>
 					<div>
-						<p class="p-1">Data</p>
+						<!-- <p class="p-1">Data</p> -->
 						<input
-						class="rounded focus:outline-none text-black py-1 px-2"
+						class="rounded focus:outline-none bg-gray-50 text-[#061735] py-1 px-2 text-center"
 						type="text" 
 						:value="date" 
 						@input="event => date = event.target.value" 
@@ -163,21 +161,20 @@
 						/>
 					</div>
 					<div>
-						<p class="p-1">Godzina</p>
+						<!-- <p class="p-1">Godzina</p> -->
 						<input
-						class="rounded focus:outline-none text-black py-1 px-2"
+						class="rounded focus:outline-none bg-gray-50 text-[#061735] py-1 px-2 text-center"
 						type="text" 
 						:value="currentHour"
 						disabled
 						/>
 					</div>
-				</div>
 				<div class="flex justify-center col-span-2">
-					<button type="button" class="w-64 tracking-wider uppercase bg-[#da1c04] rounded-full py-2" v-on:click="sendData()">Wyślij</button>
+					<button type="button" class="w-64 tracking-widest uppercase bg-[#CC0001] rounded-full py-2" v-on:click="sendData()">Zapisz</button>
 				</div>
 			</form>
-			<div class="absolute -bottom-40 -right-36 rounded-full w-96 h-96 bg-[#da1c04] z-0"></div>
-			<div class="absolute -top-40 left-12 rounded-full w-96 h-96 bg-[#da1c04] z-0 shadow"></div>
+			<div class="absolute -bottom-40 -right-36 rounded-full w-96 h-96 bg-[#CC0001] z-0"></div>
+			<div class="absolute -top-40 -left-24 rounded-full w-96 h-96 bg-[#CC0001] z-0 shadow"></div>
 		</div>
 		<div class="error" v-if="error != ''">
 			{{ error }}
