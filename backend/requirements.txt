@@ -1,7 +1,9 @@
 fastapi
 uvicorn
-psycopg2 
+asyncpg
+psycopg2
 sqlalchemy
 sqlmodel
 geoalchemy2
 python-multipart
+alembic

@@ -17,7 +17,7 @@ export class StudentFormService {
 			nameAndSurname: this.nameAndSurname,
 			studentClass: this.studentClass,
 			date: this.date,
-			numberOfHours: this.numberOfHours,
+			numberOfLessons: this.numberOfHours,
 			currentHour: this.currentHour,
 			issues: this.issues
 		}
