@@ -8,18 +8,11 @@ DATABASE_URL = 'postgresql://admin:admin!@postgres:5432/evidention'
 engine = create_engine(DATABASE_URL)
 
 
-
-
-
-
-
-
-
 while (True):
     currentDate = datetime.date.today()
     getTime = engine.connect().execute(f"SELECT time FROM form WHERE date= {currentDate}")
     getTime = getTime.split("-")[1]
-    
+
     now = datetime.now()
     currentTime = now.strftime("%H:%M")
 
