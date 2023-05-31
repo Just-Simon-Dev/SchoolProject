@@ -12,7 +12,7 @@ class StudentFormService():
         ip = request.client.host
         print(ip)
         
-        form = models.Form(student_form_model.name_and_surname, student_form_model.date, student_form_model.numberOfLessons, student_form_model.issues, ip)
+        form = models.Form(student_form_model.name_and_surname, student_form_model.date, student_form_model.numberOfHour, student_form_model.issues, ip)
 
         self.db.add(form)
         self.db.commit()
