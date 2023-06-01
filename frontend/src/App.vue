@@ -1,6 +1,8 @@
 <template>
 
-  <div class="backgound">tutaj ma być logo szkoły jako background</div>
+  <!-- <div class="w-full flex justify-center py-5">
+    <img src="logo.svg" alt="logo ZSŁ">
+  </div> -->
   <RouterView />
   
 </template>
