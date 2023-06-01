@@ -83,10 +83,11 @@
 <template>
 	<div class="flex flex-col w-full min-h-screen items-center justify-center bg-slate-50">
 		<div class="relative flex items-end bg-white p-10 rounded-lg shadow-md space-x-10 overflow-hidden">
-			<div class="flex items-end h-full z-10">
-				<img class="align-bottom" src="logo.svg" alt="logo ZSŁ">
+			<div class="flex h-full z-10">
+				<img src="logo.svg" alt="logo ZSŁ">
 			</div>
 			<form class="grid grid-cols-2 justify-center gap-6 rounded-lg shadow-lg p-10 bg-[#07264e] text-white z-10">
+				<h1 class="col-span-2 text-center uppercase tracking-wider">Formularz</h1>
 					<div class="col-span-2">
 						<p class="p-1">Imię</p>
 						<input
@@ -173,8 +174,9 @@
 					<button type="button" class="w-64 tracking-widest uppercase bg-[#CC0001] rounded-full py-2" v-on:click="sendData()">Zapisz</button>
 				</div>
 			</form>
-			<div class="absolute -bottom-40 -right-36 rounded-full w-96 h-96 bg-[#CC0001] z-0"></div>
-			<div class="absolute -top-40 -left-24 rounded-full w-96 h-96 bg-[#CC0001] z-0 shadow"></div>
+			<svg class="absolute -top-56 -left-52 -rotate-45 scale-150" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CC0001" fill-opacity="1" d="M0,64L24,74.7C48,85,96,107,144,138.7C192,171,240,213,288,224C336,235,384,213,432,186.7C480,160,528,128,576,144C624,160,672,224,720,213.3C768,203,816,117,864,106.7C912,96,960,160,1008,176C1056,192,1104,160,1152,138.7C1200,117,1248,107,1296,122.7C1344,139,1392,181,1416,202.7L1440,224L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path></svg>
+			<svg class="absolute -bottom-56 -right-40 -rotate-45 scale-150" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CC0001" fill-opacity="1" d="M0,64L24,74.7C48,85,96,107,144,138.7C192,171,240,213,288,224C336,235,384,213,432,186.7C480,160,528,128,576,144C624,160,672,224,720,213.3C768,203,816,117,864,106.7C912,96,960,160,1008,176C1056,192,1104,160,1152,138.7C1200,117,1248,107,1296,122.7C1344,139,1392,181,1416,202.7L1440,224L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path></svg>
+			
 		</div>
 		<div class="error" v-if="error != ''">
 			{{ error }}
