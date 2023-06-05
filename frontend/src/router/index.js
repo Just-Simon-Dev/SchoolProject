@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import AdminFormView from '../views/AdminFormView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -9,6 +10,11 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: AdminFormView,
+    }
     // {
     //   path: '/about',
     //   name: 'about',

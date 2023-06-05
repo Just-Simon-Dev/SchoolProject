@@ -1,5 +1,4 @@
 <template>
-
   <!-- <div class="w-full flex justify-center py-5">
     <img src="logo.svg" alt="logo ZSŁ">
   </div> -->

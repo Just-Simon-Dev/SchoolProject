@@ -65,10 +65,8 @@
 	let error = ref('')
 
 	function sendData(){
-		if(name == "" || surname == "" || studentClass == "" || currentHour.value == ""){
-			console.log(error)
+		if(nameAndSurname == "" || studentClass == "" || currentHour.value == ""){
 			error.value = "niektóre pola nie zostały wypełnione!"
-			console.log(error)
 			return;
 		}
 		const studentFormService = new StudentFormService(`${name} ${surname}`, studentClass, date, numberOfHours, currentHour.value, issues)
