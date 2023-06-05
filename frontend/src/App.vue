@@ -1,6 +1,5 @@
 <template>
-
-  <div class="backgound">tutaj ma być logo szkoły jako background</div>
+  
   <RouterView />
   
 </template>
