@@ -2,10 +2,13 @@ from fastapi import FastAPI, Depends, Request, Form
 from sqlalchemy.orm import Session
 
 from app.models.StudentFormModel import StudentFormModel
+from .models.AdminFormModel import AdminFormModel
 from .Services.DbService import SessionLocal, engine
 from .Services.StudentFormService import StudentFormService
+from .Services.AdminFormService import AdminFormService
 from .models import models
 from datetime import date
+from fastapi.responses import JSONResponse
 
 
 models.Base.metadata.create_all(engine)
@@ -40,3 +43,9 @@ async def root(
 async def getForms(db: Session = Depends(get_db)):
     data = db.query(models.Form).all()
     return data
+
+@app.post('/AdminForm')
+async def adminForm(db: Session = Depends(get_db), login: str = Form(), password: str = Form()):
+    adminForm = AdminFormModel(login, password)
+    result = AdminFormService(db).checkCorrectCredentials(adminForm)
+    return JSONResponse(result)
