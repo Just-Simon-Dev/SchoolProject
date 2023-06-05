@@ -35,3 +35,8 @@ async def root(
     student_form_service = StudentFormService(db)
     ip = student_form_service.sendDataToDb(request, student_form_model)
     return ip
+
+@app.get("/getForms")
+async def getForms(db: Session = Depends(get_db)):
+    data = db.query(models.Form).all()
+    return data
