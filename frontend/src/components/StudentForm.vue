@@ -65,7 +65,7 @@
 	let error = ref('')
 
 	function sendData(){
-		if(nameAndSurname == "" || studentClass == "" || currentHour.value == ""){
+		if(name == "" || surname == "" || studentClass == "" || currentHour.value == ""){
 			error.value = "niektóre pola nie zostały wypełnione!"
 			return;
 		}

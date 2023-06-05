@@ -7,3 +7,4 @@ sqlmodel
 geoalchemy2
 python-multipart
 alembic
+bcrypt
