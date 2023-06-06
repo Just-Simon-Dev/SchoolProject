@@ -14,7 +14,7 @@ export class AdminFormService {
 			password: this.password
 		}
 
-		axios.get(url, payload).then(response => {
+		axios.post(url, payload).then(response => {
 			return response.data
 		}).catch(error => {
 			return `error ${error}`
