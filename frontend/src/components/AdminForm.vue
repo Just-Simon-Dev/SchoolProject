@@ -1,7 +1,9 @@
 <script setup>
 
+import router from '@/router';
 import { AdminFormService } from '../services/AdminFormService'
 import { ref } from 'vue';
+
 
 let login = ""
 let password = ""
@@ -11,9 +13,11 @@ let error = ref("")
 function sendData(){
 	let adminFormService = new AdminFormService(login, password)
 	let result = adminFormService.postData()
-	if(result.includes("error")){
+	if(result?.includes("error")){
 		error = result
+		// return;
 	}
+	router.push( {path: 'admin/classrooms'} )
 }
 
 </script>
