@@ -7,7 +7,7 @@ export class AdminFormService {
 		this.password = password
 	}
 	postData() {
-		const url = env.apiUrl + 'AdminLogin'
+		const url = env.apiUrl + 'authentication/login'
 
 		const payload = {
 			login: this.login,

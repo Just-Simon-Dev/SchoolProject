@@ -3,7 +3,7 @@ import { env } from "../../env/env"
 
 export class ChoosingClassroomService {
 	getData() {
-		const url = env.apiUrl + 'GetClassrooms'
+		const url = env.apiUrl + 'authentication/get-classroom'
 
 		axios.get(url).then(response => {
 			return response.data
@@ -12,7 +12,7 @@ export class ChoosingClassroomService {
 		})
 	}
 	postData(classroom){
-		const url = env.apiUrl + 'PostClassroom'
+		const url = env.apiUrl + 'authentication/set-classroom-to-user'
 
 		const payload = {
 			classroom: classroom

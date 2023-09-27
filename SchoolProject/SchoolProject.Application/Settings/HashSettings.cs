@@ -1,0 +1,8 @@
+﻿using System.Text;
+
+namespace SchoolProject.Application.Settings;
+
+public class HashSettings
+{
+    public byte[] Salt = Encoding.UTF8.GetBytes("9003A697CA6F038B5140A9A86D000899E1521C4B29BE5996E452882E2103D2404AEB3F2EB89DECB63310D8F6B3B02FF15323CE8DE4F9F7547641D5A2FFB1F698");
+}

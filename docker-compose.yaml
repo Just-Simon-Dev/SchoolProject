@@ -13,16 +13,16 @@ services:
     networks:
       - ewidencja_network
     depends_on:
-      - fastapi
+      - backend
 
-  fastapi:
+  backend:
     build:
-      context: ./backend
+      context: ./SchoolProject/SchoolProject.Api
       dockerfile: ./Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./backend/:/backend/
+      - ./SchoolProject/:/SchoolProject/
     networks:
       - ewidencja_network
   
@@ -32,7 +32,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     expose:
-      - 5432
+      - 5434
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin!

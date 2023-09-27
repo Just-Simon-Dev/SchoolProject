@@ -2,23 +2,23 @@ import axios from "axios"
 import { env } from "../../env/env"
 
 export class StudentFormService {
-	constructor(nameAndSurname, studentClass, date, numberOfHours, currentHour, issues){
-		this.nameAndSurname = nameAndSurname
+	constructor(name, surname, studentClass, numberOfHours, currentHour, issues){
+		this.name = name
+		this.surname = surname
 		this.studentClass = studentClass
-		this.date = date
 		this.numberOfHours = numberOfHours
 		this.currentHour = currentHour
 		this.issues = issues
 	}
 	PostData() {
-		const url = env.apiUrl + 'StudentForm'
+		const url = env.apiUrl + 'evidention/add-record'
 
 		const payload = {
-			nameAndSurname: this.nameAndSurname,
-			studentClass: this.studentClass,
-			date: this.date,
+			name: this.name,
+			surname: this.surname,
+			class: this.studentClass,
 			numberOfLessons: this.numberOfHours,
-			currentHour: this.currentHour,
+			lessonsTimes: this.currentHour,
 			issues: this.issues
 		}
 

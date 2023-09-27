@@ -50,7 +50,7 @@
 			}
 		});
 
-		if(output.length < 2) return "";
+		if(output.length < 2) return "7:20 - 8:30";
 
 		return `${output[0].breakHours}:${output[0].breakMinutes} - ${output[1].endLessonHours}:${output[1].endLessonMinutes}`;
 	}
@@ -65,13 +65,14 @@
 	let error = ref('')
 
 	function sendData(){
+		console.log(currentHour.value, name, surname, studentClass)
 		if(name == "" || surname == "" || studentClass == "" || currentHour.value == ""){
 			error.value = "niektóre pola nie zostały wypełnione!"
 			return;
 		}
-		const studentFormService = new StudentFormService(`${name} ${surname}`, studentClass, date, numberOfHours, currentHour.value, issues)
+		const studentFormService = new StudentFormService(name, surname, studentClass, numberOfHours, currentHour.value, issues)
 		studentFormService.PostData()
-		window.close()
+		// window.close()
 	}
 
 	
